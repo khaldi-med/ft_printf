@@ -32,7 +32,7 @@ int	ft_printf(const char *format, ...)
 	va_list	arg;
 	int i = 0;
 	va_start(arg, format);
-	ft_case(format);
+	ft_case(format, va_start(arg, format));
 	i = ft_case(format);
 	va_end(arg);
 	return i;
