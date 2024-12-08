@@ -6,7 +6,6 @@
 # include <unistd.h>
 
 int		ft_printf(const char *, ...);
-int		ft_atoi(const char *str);
 char	*ft_str_to_hex(char *str, char type);
 char	*ft_itoa(int n);
 size_t	ft_strlen(const char *str);

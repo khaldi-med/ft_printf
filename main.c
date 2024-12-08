@@ -6,8 +6,7 @@ int	main(void)
 {
 	int	i;
 
-	i = 0;
-	i = ft_printf("%d\n", 1234564);
-	printf("%d", i);
+	i = 12345;
+	printf("%s", ft_itoa(i));
 	return (0);
 }
