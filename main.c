@@ -4,16 +4,10 @@
 
 int	main(void)
 {
-	int i;
-	char	*r;
+	int	i;
 
-	i = 123456;
-	r = ft_str_to_hex(ft_itoa(i), 'x');
-	if (r)
-	{
-		printf("%s\n", r);
-		free(r);
-	}
-	printf("%x", i);
+	i = 0;
+	i = ft_printf("%d\n", 1234564);
+	printf("%d", i);
 	return (0);
 }

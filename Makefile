@@ -6,13 +6,13 @@
 #    By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/08 03:24:35 by mohkhald          #+#    #+#              #
-#    Updated: 2024/12/08 03:29:15 by mohkhald         ###   ########.fr        #
+#    Updated: 2024/12/08 19:40:03 by mohkhald         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-SRCS = ft_itoa.c ft_atoi.c ft_putstr_fd.c ft_putchar_fd.c ft_putnbr_fd.c\
-   ft_strlen.c ft_str_to_hex.c
+SRCS = ft_itoa.c ft_putstr_fd.c ft_putchar_fd.c ft_putnbr_fd.c\
+   ft_strlen.c ft_str_to_hex.c ft_printf.c
 
 NAME = libftprintf.a
 
