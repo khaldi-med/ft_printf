@@ -4,20 +4,16 @@
 
 int	main(void)
 {
-	char	*s;
+	int i;
 	char	*r;
 
-	s = "hello";
-	r = ft_str_to_hex(s, 'X');
+	i = 123456;
+	r = ft_str_to_hex(ft_itoa(i), 'x');
 	if (r)
 	{
 		printf("%s\n", r);
 		free(r);
 	}
-	while (*s)
-	{
-		printf("%X", *s);
-		s++;
-	}
+	printf("%x", i);
 	return (0);
 }
