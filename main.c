@@ -16,7 +16,7 @@ int	main(void)
 	}
 	while (*s)
 	{
-		printf("%x", *s);
+		printf("%02x", *s);
 		s++;
 	}
 	return (0);

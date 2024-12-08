@@ -1,41 +1,47 @@
-#include <stdlib.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_str_to_hex.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/08 01:52:45 by mohkhald          #+#    #+#             */
+/*   Updated: 2024/12/08 02:09:27 by mohkhald         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libftprintf.h"
 
 char	*ft_str_to_hex(char *str, char type)
 {
-	int		i;
-	int		j;
+	size_t	i;
 	char	*new_s;
 	char	*lower;
 	char	*upper;
-	int		val;
-	int		len;
+	size_t	j;
+	size_t	val;
+	size_t	len;
+	char	*digit;
 
+	len = ft_strlen(str);
 	i = 0;
 	j = 0;
 	lower = "0123456789abcdef";
 	upper = "0123456789ABCDEF";
-	char *digits; // Will point to either lower or upper based on type
-	if (type == 'x')
-		digits = lower;
-	else
-		digits = upper;
-	// Calculate length of str
-	len = 0;
-	while (str[len])
-		len++;
-	// Allocate memory: 2 hex digits per character + 1 for null terminator
-	new_s = (char *)malloc((2 * len + 1) * sizeof(char));
+	new_s = malloc(sizeof(char) * len * 2 + 1);
 	if (!new_s)
 		return (NULL);
+	if (type == 'X')
+		digit = upper;
+	else
+		digit = lower;
 	while (str[i])
 	{
-		val = (unsigned char)str[i]; // Get ASCII value as an unsigned char
-		// High nibble (first hex digit)
-		new_s[j++] = digits[val / 16];
-		// Low nibble (second hex digit)
-		new_s[j++] = digits[val % 16];
+		val = (unsigned char)str[i];
+		new_s[j++] = lower[val / 16];
+		new_s[j++] = lower[val % 16];
 		i++;
 	}
-	new_s[j] = '\0'; // Null terminate the new string
+	new_s[j] = '\0';
 	return (new_s);
 }
