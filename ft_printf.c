@@ -1,3 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/08 01:59:33 by mohkhald          #+#    #+#             */
+/*   Updated: 2024/12/08 02:00:08 by mohkhald         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+
 #include "libftprintf.h"
 
 int	ft_case(const char *str, ...)
@@ -26,7 +39,7 @@ int	ft_case(const char *str, ...)
 	va_end(arg);
 	return (count);
 }
-
+/*
 int	ft_printf(const char *format, ...)
 {
 	va_list	arg;
@@ -37,3 +50,4 @@ int	ft_printf(const char *format, ...)
 	va_end(arg);
 	return i;
 }
+*/

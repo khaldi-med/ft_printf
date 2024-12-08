@@ -2,15 +2,22 @@
 #include <stdio.h>
 #include <string.h>
 
-char	ft_str_to_hex(char *str, char type);
-
 int	main(void)
 {
 	char	*s;
+	char	*r;
 
-	s = "hello world";
-
-	printf("%x\n", ft_str_to_hex(s, 'x'));
-	printf("%x\n", atoi(s));
+	s = "hello";
+	r = ft_str_to_hex(s, 'x');
+	if (r)
+	{
+		printf("%s\n", r);
+		free(r);
+	}
+	while (*s)
+	{
+		printf("%x", *s);
+		s++;
+	}
 	return (0);
 }
