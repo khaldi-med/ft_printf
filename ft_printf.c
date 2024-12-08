@@ -6,13 +6,13 @@
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 01:59:33 by mohkhald          #+#    #+#             */
-/*   Updated: 2024/12/08 19:36:27 by mohkhald         ###   ########.fr       */
+/*   Updated: 2024/12/08 22:54:53 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	ft_case(const char *str, ...)
+static int	ft_case(const char *str, ...)
 {
 	int		count;
 	int		i;
@@ -54,7 +54,7 @@ int	ft_printf(const char *format, ...)
 
 	i = 0;
 	va_start(arg, format);
-	ft_case(format, arg);
+	i = ft_case(format, arg);
 	va_end(arg);
 	return (i);
 }
