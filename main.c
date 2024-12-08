@@ -8,7 +8,7 @@ int	main(void)
 	char	*r;
 
 	s = "hello";
-	r = ft_str_to_hex(s, 'x');
+	r = ft_str_to_hex(s, 'X');
 	if (r)
 	{
 		printf("%s\n", r);
@@ -16,7 +16,7 @@ int	main(void)
 	}
 	while (*s)
 	{
-		printf("%02x", *s);
+		printf("%X", *s);
 		s++;
 	}
 	return (0);

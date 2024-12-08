@@ -6,7 +6,7 @@
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 01:52:45 by mohkhald          #+#    #+#             */
-/*   Updated: 2024/12/08 02:09:27 by mohkhald         ###   ########.fr       */
+/*   Updated: 2024/12/08 02:24:57 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ char	*ft_str_to_hex(char *str, char type)
 	while (str[i])
 	{
 		val = (unsigned char)str[i];
-		new_s[j++] = lower[val / 16];
-		new_s[j++] = lower[val % 16];
+		new_s[j++] = digit[val / 16];
+		new_s[j++] = digit[val % 16];
 		i++;
 	}
 	new_s[j] = '\0';
