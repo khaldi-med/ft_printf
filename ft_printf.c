@@ -6,45 +6,68 @@
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 01:59:33 by mohkhald          #+#    #+#             */
-/*   Updated: 2024/12/08 22:54:53 by mohkhald         ###   ########.fr       */
+/*   Updated: 2024/12/09 01:42:39 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-static int	ft_case(const char *str, ...)
+static void	puthex_fd(unsigned int num, int format, int *count)
 {
-	int		count;
-	int		i;
-	va_list	arg;
+	char	*str;
 
-	count = 0;
-	va_start(arg, str);
-	i = 0;
-	while (str[i])
+	str = NULL;
+	if (format)
 	{
-		if (str[i] == '%')
-		{
-			if (str[i + 1] == '%')
-				ft_putchar_fd(str[i], 1);
-			else if (str[i + 1] == 'c')
-				ft_putchar_fd(va_arg(arg, int), 1);
-			else if (str[i + 1] == 's')
-				ft_putstr_fd(va_arg(arg, char *), 1);
-			else if (str[i + 1] == 'd' || str[i + 1] == 'i')
-				ft_putnbr_fd(va_arg(arg, int), 1);
-			else if (str[i + 1] == 'x' || str[i + 1] == 'X')
-				ft_str_to_hex(va_arg(arg, char *), 1);
-			else if (str[i + 1] == 'p')
-				ft_putstr_fd(va_arg(arg, char *), 1);
-			else if (str[i + 1] == 'u')
-				ft_putnbr_fd(va_arg(arg, unsigned int), 1);
-		}
-		i++;
-		count++;
+		if (format == 'x')
+			str = ft_str_to_hex((char *)&num, 'x');
+		else
+			str = ft_str_to_hex((char *)&num, 'X');
 	}
-	va_end(arg);
-	return (count);
+	if (str)
+	{
+		ft_putstr_fd(str, 1);
+		*count += ft_strlen(str);
+		free(str);
+	}
+}
+
+static void	ft_put_pointer_fd(void *ptr, int *count)
+{
+	unsigned long	address;
+	char			*base;
+	char			*str;
+
+	address = (unsigned long)ptr;
+	base = "0123456789abcdef";
+	write(1, "0x", 2);
+	if (address == 0)
+		write(1, "0", 1);
+	str = ft_str_to_hex((char *)&address, 'x');
+	if (str)
+	{
+		ft_putstr_fd(str, 1);
+		*count += ft_strlen(str);
+		free(str);
+	}
+}
+static void	ft_handle_format(const char format, va_list args, int *count)
+{
+	char			c;
+	char			*str;
+	int				n;
+	unsigned int	num;
+
+	str = NULL;
+	n = 0;
+	num = 0;
+	if (format == 'c')
+	{
+		c = (char)va_arg(args, int);
+		*count += write(1, &c, 1);
+	}
+	else if (format == 's')
+		str =
 }
 
 int	ft_printf(const char *format, ...)
