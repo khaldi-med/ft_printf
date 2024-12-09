@@ -6,7 +6,7 @@
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 01:59:33 by mohkhald          #+#    #+#             */
-/*   Updated: 2024/12/09 01:42:39 by mohkhald         ###   ########.fr       */
+/*   Updated: 2024/12/09 22:43:28 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,16 @@ static void	ft_handle_format(const char format, va_list args, int *count)
 		c = (char)va_arg(args, int);
 		*count += write(1, &c, 1);
 	}
-	else if (format == 's')
-		str =
+	else if (format == 's'){
+		str = va_arg(args, char *);
+		if(!str)
+			str = "(null)";
+		*count += write(1, str, ft_strlen(str));	
+	}
+	else if(format == 'p')
+		ft_put_pointer_fd(va_arg(args, void*), count);
+	else if(format == 'd' || format == 'i')
+		n = va_arg();
 }
 
 int	ft_printf(const char *format, ...)
