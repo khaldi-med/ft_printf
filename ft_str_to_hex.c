@@ -6,7 +6,7 @@
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 01:52:45 by mohkhald          #+#    #+#             */
-/*   Updated: 2024/12/08 19:20:34 by mohkhald         ###   ########.fr       */
+/*   Updated: 2024/12/09 22:26:21 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 char	*ft_str_to_hex(char *str, char type)
 {
+	if(!str)
+		return NULL;
 	size_t	i;
 	char	*new_s;
 	char	*lower;
