@@ -6,25 +6,26 @@
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 22:36:43 by mohkhald          #+#    #+#             */
-/*   Updated: 2024/11/18 06:19:57 by mohkhald         ###   ########.fr       */
+/*   Updated: 2024/12/10 08:21:58 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	ft_putnbr_fd(int n, int fd)
+int	ft_putnbr_fd(int n, int fd)
 {
+	int	count;
+
+	count = 0;
 	if (n == -2147483648)
-	{
-		ft_putstr_fd("-2147483648", fd);
-		return ;
-	}
+		return (ft_putstr_fd("-2147483648", fd));
 	if (n < 0)
 	{
-		ft_putchar_fd('-', fd);
+		count += write(1, "-", fd);
 		n *= -1;
 	}
 	if (n > 9)
 		ft_putnbr_fd(n / 10, fd);
-	ft_putchar_fd(n % 10 + '0', fd);
+	count += ft_putchar_fd(n % 10 + '0', fd);
+	return (count);
 }

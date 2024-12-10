@@ -6,7 +6,7 @@
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 01:13:45 by mohkhald          #+#    #+#             */
-/*   Updated: 2024/12/10 08:09:36 by mohkhald         ###   ########.fr       */
+/*   Updated: 2024/12/10 08:21:53 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-void	ft_putnbr_fd(int n, int fd);
-void	ft_putchar_fd(char c, int fd);
+int		ft_putnbr_fd(int n, int fd);
+int		ft_putchar_fd(char c, int fd);
 int		ft_printf(const char *, ...);
 int		ft_putnbr_base(unsigned int n, int base, char *format);
 int		ft_put_pointer(unsigned long n);
