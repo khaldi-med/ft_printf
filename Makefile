@@ -6,13 +6,13 @@
 #    By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/08 03:24:35 by mohkhald          #+#    #+#              #
-#    Updated: 2024/12/10 08:24:39 by mohkhald         ###   ########.fr        #
+#    Updated: 2024/12/10 08:28:44 by mohkhald         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 SRCS = ft_put_pointer.c ft_putstr_fd.c ft_putchar_fd.c\
-   ft_putnbr_base.c ift_putnbr_fd.c ft_printf.c
+   ft_putnbr_base.c ft_putnbr_fd.c ft_printf.c
 
 NAME = libftprintf.a
 
