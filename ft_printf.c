@@ -6,58 +6,34 @@
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 01:07:30 by mohkhald          #+#    #+#             */
-/*   Updated: 2024/12/10 07:03:42 by mohkhald         ###   ########.fr       */
+/*   Updated: 2024/12/10 08:09:21 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	ft_handle_format(char format, va_list args)
+static int	ft_handle_format(char format, va_list args)
 {
-	char			c;
-	char			*str;
-	int				n;
-	unsigned int	num;
+	int	count;
 
-	str = NULL;
-	n = 0;
-	num = 0;
+	count = 0;
 	if (format == 'c')
-	{
-		c = (char)va_arg(args, int);
-		*count += write(1, &c, 1);
-	}
-	else if (format == 's')
-	{
-		str = va_arg(args, char *);
-		if (!str)
-			str = "(null)";
-		*count += write(1, str, ft_strlen(str));
-	}
-	else if (format == 'p')
-		ft_put_pointer_fd(va_arg(args, void *), count);
-	else if (format == 'd' || format == 'i')
-	{
-		n = va_arg(args, int);
-		str = ft_itoa(n);
-		if (str)
-			write(1, str, ft_strlen(str));
-		*count += ft_strlen(str);
-		free(str);
-	}
-	else if (format == 'u')
-	{
-		num = va_arg(args, unsigned int);
-		str = ft_itoa(num);
-		if (str)
-			write(1, str, ft_strlen(str));
-		*count += ft_strlen(str);
-		free(str);
-	}
-	else if (format == 'x' || format == 'X')
-		ft_puthex_fd(va_arg(args, unsigned int), format, count);
-	else if (format == '%')
-		*count += write(1, "%", 1);
+		count += write(1, (char)va_arg(args, int), 1);
+	if (format == 's')
+		count += ft_putstr_fd(va_arg(args, char *), 1);
+	if (format == 'p')
+		return (ft_put_pointer(va_arg(args, unsigned long)));
+	if (format == 'd' || format == 'i')
+		count += ft_putnbr(va_arg(args, int));
+	if (format == 'u')
+		return (ft_putnbr_base(va_arg(args, unsigned int), 10, "0123456789"));
+	if (format == 'x')
+		ft_putnbr_base(va_arg(args, unsigned int), 16, "0123456789abcdef");
+	if (format == 'X')
+		ft_putnbr_base(va_arg(args, unsigned int), 16, "0123456789ABCDEF");
+	if (format == '%')
+		count += write(1, "%", 1);
+	return (count);
 }
 
 int	ft_printf(const char *format, ...)
@@ -72,10 +48,10 @@ int	ft_printf(const char *format, ...)
 		if (*format == '%' && *(format + 1))
 		{
 			format++;
-			ft_handle_format(*format, args, &count);
+			ft_handle_format(*format, args);
 		}
 		else
-			count += write(1, format, 1);
+			count += write(1, &*format, 1);
 		format++;
 	}
 	va_end(args);
