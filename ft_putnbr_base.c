@@ -1,20 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_punt_uns_nbr_fd.c                               :+:      :+:    :+:   */
+/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 05:22:13 by mohkhald          #+#    #+#             */
-/*   Updated: 2024/12/10 05:27:18 by mohkhald         ###   ########.fr       */
+/*   Updated: 2024/12/10 06:48:48 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putunsnbr_fd(unsigned int n)
+int	ft_putnbr_base(long n, int base, char *format)
 {
-	if (n >= 10)
-		ft_putunsnbr_fd(n / 10);
-	ft_putchar_fd((n % 10 + '0'), 1);
+	int		count;
+	int		i;
+	char	buffer[20];
+
+	count = 0;
+	i = 0;
+	if (n == 0)
+		count += write(1, "0", 1);
+	while (n)
+	{
+		buffer[i++] = format[n % base];
+		n /= base;
+	}
+	buffer[i] = '\0';
+	i = 0;
+	while (buffer[i] != '\0')
+		count += write(1, &buffer[i++], 1);
+	return (count);
 }
