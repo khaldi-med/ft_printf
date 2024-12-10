@@ -6,16 +6,14 @@
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 01:52:45 by mohkhald          #+#    #+#             */
-/*   Updated: 2024/12/09 22:26:21 by mohkhald         ###   ########.fr       */
+/*   Updated: 2024/12/10 01:23:49 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 char	*ft_str_to_hex(char *str, char type)
 {
-	if(!str)
-		return NULL;
 	size_t	i;
 	char	*new_s;
 	char	*lower;
@@ -25,6 +23,8 @@ char	*ft_str_to_hex(char *str, char type)
 	size_t	len;
 	char	*digit;
 
+	if (!str)
+		return (NULL);
 	len = ft_strlen(str);
 	i = 0;
 	j = 0;

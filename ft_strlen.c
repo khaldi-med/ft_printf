@@ -6,11 +6,11 @@
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 00:03:42 by mohkhald          #+#    #+#             */
-/*   Updated: 2024/12/08 02:00:37 by mohkhald         ###   ########.fr       */
+/*   Updated: 2024/12/10 01:24:15 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 size_t	ft_strlen(const char *str)
 {

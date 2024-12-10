@@ -6,12 +6,12 @@
 #    By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/08 03:24:35 by mohkhald          #+#    #+#              #
-#    Updated: 2024/12/09 01:07:57 by mohkhald         ###   ########.fr        #
+#    Updated: 2024/12/10 01:20:37 by mohkhald         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-SRCS = ft_itoa.c ft_putstr_fd.c ft_putchar_fd.c ft_putnbr_fd.c\
+SRCS = ft_itoa.c ft_putstr_fd.c ft_putchar_fd.c\
    ft_strlen.c ft_str_to_hex.c ft_printf.c
 
 NAME = libftprintf.a
@@ -29,7 +29,7 @@ FLAGS = -Wall -Wextra -Werror
 all: $(NAME)
 
 
-%.o: %.c libftprintf.h
+%.o: %.c ft_printf.h
 	$(CC) $(FLAGS) -c $< -o $@
 
 

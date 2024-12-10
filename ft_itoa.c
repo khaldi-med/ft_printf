@@ -6,11 +6,11 @@
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 22:52:36 by mohkhald          #+#    #+#             */
-/*   Updated: 2024/12/09 00:29:23 by mohkhald         ###   ########.fr       */
+/*   Updated: 2024/12/10 01:20:19 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 static int	ft_len(unsigned int n)
 {
