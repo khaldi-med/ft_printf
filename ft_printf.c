@@ -6,7 +6,7 @@
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 01:07:30 by mohkhald          #+#    #+#             */
-/*   Updated: 2024/12/10 08:33:22 by mohkhald         ###   ########.fr       */
+/*   Updated: 2024/12/10 08:42:09 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,8 @@
 
 static int	ft_handle_format(char format, va_list args)
 {
-	int	count;
-
-	count = 0;
 	if (format == 'c')
-		count += ft_putchar_fd(va_arg(args, int), 1);
+		return (ft_putchar_fd(va_arg(args, int), 1));
 	else if (format == 's')
 		return (ft_putstr_fd(va_arg(args, char *), 1));
 	else if (format == 'p')
@@ -33,9 +30,9 @@ static int	ft_handle_format(char format, va_list args)
 	else if (format == 'X')
 		return (ft_putnbr_base(va_arg(args, unsigned int), 16,
 				"0123456789ABCDEF"));
-	else if (format == '%')
-		count += write(1, "%", 1);
-	return (count);
+	if (format == '%')
+		return (ft_putchar_fd('%', 1));
+	return (0);
 }
 
 int	ft_printf(const char *format, ...)
@@ -47,13 +44,12 @@ int	ft_printf(const char *format, ...)
 	va_start(args, format);
 	while (*format)
 	{
-		if (*format == '%' && *(format + 1))
+		if (*format == '%')
 		{
-			format++;
-			ft_handle_format(*format, args);
+			count += ft_handle_format(*(++format), args);
 		}
 		else
-			count += write(1, &*format, 1);
+			count += ft_putchar_fd(*format, 1);
 		format++;
 	}
 	va_end(args);
