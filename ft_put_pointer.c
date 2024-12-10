@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_put_pointer.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/10 01:13:45 by mohkhald          #+#    #+#             */
-/*   Updated: 2024/12/10 07:01:15 by mohkhald         ###   ########.fr       */
+/*   Created: 2024/12/10 06:51:05 by mohkhald          #+#    #+#             */
+/*   Updated: 2024/12/10 06:56:40 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_h
-# define FT_PRINTF_h
+#include "ft_printf.h"
 
-# include <stdarg.h>
-# include <stdlib.h>
-# include <unistd.h>
+int	ft_put_pointer(unsigned long n)
+{
+	int	count;
 
-int		ft_printf(const char *, ...);
-int		ft_putnbar_base(unsigned int n, int base, char *format);
-char	*ft_itoa(int n);
-size_t	ft_strlen(const char *str);
-void	ft_putstr_fd(char *s, int fd);
-void	ft_putchar_fd(char c, int fd);
-
-#endif
+	count = 0;
+	ft_putstr_fd("0x", 1);
+	if (n == 0)
+		count += write(1, "0", 1);
+	else
+		count += ft_printnbr_base(n, 16, "0123456789abcdef");
+	return (count);
+}

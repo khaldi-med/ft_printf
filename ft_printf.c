@@ -6,53 +6,13 @@
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 01:07:30 by mohkhald          #+#    #+#             */
-/*   Updated: 2024/12/10 06:22:53 by mohkhald         ###   ########.fr       */
+/*   Updated: 2024/12/10 07:03:42 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	ft_puthex_fd(unsigned int num, int format, int *count)
-{
-	char	*str;
-
-	str = NULL;
-	if (format)
-	{
-		if (format == 'x')
-			str = ft_str_to_hex((char *)&num, 'x');
-		else
-			str = ft_str_to_hex((char *)&num, 'X');
-	}
-	if (str)
-	{
-		ft_putstr_fd(str, 1);
-		*count += ft_strlen(str);
-		free(str);
-	}
-}
-
-static void	ft_put_pointer_fd(void *ptr, int *count)
-{
-	unsigned long	address;
-	char			*base;
-	char			*str;
-
-	address = (unsigned long)ptr;
-	base = "0123456789abcdef";
-	write(1, "0x", 2);
-	if (address == 0)
-		write(1, "0", 1);
-	str = ft_str_to_hex((char *)&address, 'x');
-	if (str)
-	{
-		ft_putstr_fd(str, 1);
-		*count += ft_strlen(str);
-		free(str);
-	}
-}
-
-static void	ft_handle_format(const char format, va_list args, int *count)
+static void	ft_handle_format(char format, va_list args)
 {
 	char			c;
 	char			*str;

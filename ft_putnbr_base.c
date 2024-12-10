@@ -6,13 +6,13 @@
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 05:22:13 by mohkhald          #+#    #+#             */
-/*   Updated: 2024/12/10 06:48:48 by mohkhald         ###   ########.fr       */
+/*   Updated: 2024/12/10 07:00:45 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putnbr_base(long n, int base, char *format)
+int	ft_putnbr_base(unsigned int n, int base, char *format)
 {
 	int		count;
 	int		i;
