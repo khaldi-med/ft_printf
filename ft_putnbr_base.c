@@ -6,7 +6,7 @@
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 05:22:13 by mohkhald          #+#    #+#             */
-/*   Updated: 2024/12/10 08:10:07 by mohkhald         ###   ########.fr       */
+/*   Updated: 2024/12/11 06:18:08 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,22 @@ int	ft_putnbr_base(unsigned int n, int base, char *format)
 {
 	int		count;
 	int		i;
-	char	buffer[20];
+	char	buffer[19];
 
 	count = 0;
 	i = 0;
 	if (n == 0)
-		count += write(1, "0", 1);
+		return (ft_putchar_fd('0', 1));
 	while (n)
 	{
 		buffer[i++] = format[n % base];
 		n /= base;
 	}
-	buffer[i] = '\0';
-	i = 0;
-	while (buffer[i] != '\0')
-		count += write(1, &buffer[i++], 1);
+	while (i--)
+	{
+		if (ft_putchar_fd(buffer[i], 1) == -1)
+			return (-1);
+		count++;
+	}
 	return (count);
 }

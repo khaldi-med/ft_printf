@@ -6,7 +6,7 @@
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 01:07:30 by mohkhald          #+#    #+#             */
-/*   Updated: 2024/12/10 08:42:09 by mohkhald         ###   ########.fr       */
+/*   Updated: 2024/12/11 06:53:08 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,18 @@ static int	ft_handle_format(char format, va_list args)
 {
 	if (format == 'c')
 		return (ft_putchar_fd(va_arg(args, int), 1));
-	else if (format == 's')
+	if (format == 's')
 		return (ft_putstr_fd(va_arg(args, char *), 1));
-	else if (format == 'p')
-		return (ft_put_pointer(va_arg(args, unsigned long)));
-	else if (format == 'd' || format == 'i')
+	if (format == 'p')
+		return (ft_put_pointer(va_arg(args, void *)));
+	if (format == 'd' || format == 'i')
 		return (ft_putnbr_fd(va_arg(args, int), 1));
-	else if (format == 'u')
+	if (format == 'u')
 		return (ft_putnbr_base(va_arg(args, unsigned int), 10, "0123456789"));
-	else if (format == 'x')
+	if (format == 'x')
 		return (ft_putnbr_base(va_arg(args, unsigned int), 16,
 				"0123456789abcdef"));
-	else if (format == 'X')
+	if (format == 'X')
 		return (ft_putnbr_base(va_arg(args, unsigned int), 16,
 				"0123456789ABCDEF"));
 	if (format == '%')
@@ -39,6 +39,7 @@ int	ft_printf(const char *format, ...)
 {
 	va_list	args;
 	int		count;
+	int		neg;
 
 	count = 0;
 	va_start(args, format);
@@ -46,10 +47,19 @@ int	ft_printf(const char *format, ...)
 	{
 		if (*format == '%')
 		{
-			count += ft_handle_format(*(++format), args);
+			neg = ft_handle_format(*(++format), args);
+			if (neg == -1)
+				va_end(args);
+			return (-1);
+			neg += count;
 		}
 		else
-			count += ft_putchar_fd(*format, 1);
+		{
+			if (ft_putchar_fd(*format, 1) == -1)
+				va_end(args);
+			return (-1);
+			count++;
+		}
 		format++;
 	}
 	va_end(args);

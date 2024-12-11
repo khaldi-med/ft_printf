@@ -6,21 +6,34 @@
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 06:51:05 by mohkhald          #+#    #+#             */
-/*   Updated: 2024/12/10 08:26:21 by mohkhald         ###   ########.fr       */
+/*   Updated: 2024/12/11 06:50:30 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_put_pointer(unsigned long n)
+int	ft_put_pointer(void *ptr)
 {
-	int	count;
+	int				count;
+	int				neg;
+	unsigned long	n;
 
-	count = 0;
-	ft_putstr_fd("0x", 1);
+	n = (unsigned long)ptr;
+	count = ft_putstr_fd("0x", 1);
+	if (count == -1)
+		return (-1);
 	if (n == 0)
-		count += write(1, "0", 1);
+	{
+		if (ft_putchar_fd('0', 1) == -1)
+			return (-1);
+		count++;
+	}
 	else
-		count += ft_putnbr_base(n, 16, "0123456789abcdef");
+	{
+		neg = ft_putnbr_base(n, 16, "0123456789abcdef");
+		if (neg == -1)
+			return (-1);
+		count += neg;
+	}
 	return (count);
 }

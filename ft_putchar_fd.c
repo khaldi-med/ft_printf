@@ -6,7 +6,7 @@
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 01:21:53 by mohkhald          #+#    #+#             */
-/*   Updated: 2024/12/10 08:19:59 by mohkhald         ###   ########.fr       */
+/*   Updated: 2024/12/11 06:13:28 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 
 int	ft_putchar_fd(char c, int fd)
 {
-	int	count;
-
-	count = 0;
-	count += write(fd, &c, 1);
-	return (count);
+	if (write(fd, &c, 1) == -1)
+		return (-1);
+	return (1);
 }
