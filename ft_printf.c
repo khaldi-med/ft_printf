@@ -6,7 +6,7 @@
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 01:07:30 by mohkhald          #+#    #+#             */
-/*   Updated: 2024/12/11 06:53:08 by mohkhald         ###   ########.fr       */
+/*   Updated: 2024/12/12 02:26:06 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	ft_handle_format(char format, va_list args)
 	if (format == 's')
 		return (ft_putstr_fd(va_arg(args, char *), 1));
 	if (format == 'p')
-		return (ft_put_pointer(va_arg(args, void *)));
+		return (ft_put_pointer(va_arg(args, unsigned long)));
 	if (format == 'd' || format == 'i')
 		return (ft_putnbr_fd(va_arg(args, int), 1));
 	if (format == 'u')
@@ -39,26 +39,19 @@ int	ft_printf(const char *format, ...)
 {
 	va_list	args;
 	int		count;
-	int		neg;
 
 	count = 0;
 	va_start(args, format);
 	while (*format)
 	{
 		if (*format == '%')
-		{
-			neg = ft_handle_format(*(++format), args);
-			if (neg == -1)
-				va_end(args);
-			return (-1);
-			neg += count;
-		}
+			count += ft_handle_format(*(++format), args);
 		else
+			count += ft_putchar_fd(*format, 1);
+		if (count == -1)
 		{
-			if (ft_putchar_fd(*format, 1) == -1)
-				va_end(args);
+			va_end(args);
 			return (-1);
-			count++;
 		}
 		format++;
 	}

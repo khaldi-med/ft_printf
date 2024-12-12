@@ -6,19 +6,17 @@
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 06:51:05 by mohkhald          #+#    #+#             */
-/*   Updated: 2024/12/11 06:50:30 by mohkhald         ###   ########.fr       */
+/*   Updated: 2024/12/12 02:02:56 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_put_pointer(void *ptr)
+int	ft_put_pointer(unsigned long n)
 {
-	int				count;
-	int				neg;
-	unsigned long	n;
+	int	count;
+	int	neg;
 
-	n = (unsigned long)ptr;
 	count = ft_putstr_fd("0x", 1);
 	if (count == -1)
 		return (-1);
