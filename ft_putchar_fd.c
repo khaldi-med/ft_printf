@@ -6,7 +6,7 @@
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 01:21:53 by mohkhald          #+#    #+#             */
-/*   Updated: 2024/12/12 02:07:50 by mohkhald         ###   ########.fr       */
+/*   Updated: 2024/12/13 19:45:36 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	ft_putchar_fd(char c, int fd)
 {
-	if (write(fd, &c, 1) == -1)
-		return (-1);
+	write(fd, &c, 1);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 01:22:15 by mohkhald          #+#    #+#             */
-/*   Updated: 2024/12/12 01:42:57 by mohkhald         ###   ########.fr       */
+/*   Updated: 2024/12/13 19:46:09 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ int	ft_putstr_fd(char *s, int fd)
 		s = "(null)";
 	while (s[count])
 	{
-		if (ft_putchar_fd(s[count], fd) == -1)
-			return (-1);
+		ft_putchar_fd(s[count], fd);
 		count++;
 	}
 	return (count);
