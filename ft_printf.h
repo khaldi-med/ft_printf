@@ -6,7 +6,7 @@
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 01:13:45 by mohkhald          #+#    #+#             */
-/*   Updated: 2024/12/12 02:19:48 by mohkhald         ###   ########.fr       */
+/*   Updated: 2024/12/14 01:27:42 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define FT_PRINTF_H
 
 # include <stdarg.h>
-# include <stdlib.h>
 # include <unistd.h>
 
 int	ft_putnbr_fd(int n, int fd);
