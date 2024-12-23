@@ -1,4 +1,5 @@
 #include "ft_printf.h"
+#include <fcntl.h>
 #include <limits.h>
 #include <stdarg.h>
 #include <stdio.h>
@@ -7,14 +8,20 @@
 
 int	main(void)
 {
-	int	i;
+	int	fd;
 	int	j;
+	int	i;
 
-	i = 0;
+	close(1);
+	fd = open("text.txt", O_RDWR);
 	j = 0;
-	i = ft_printf("%p\n", NULL);
-	ft_printf("%d\n", i);
-	j = printf("%p\n", NULL);
-	printf("%d\n", j);
+	i = 0;
+	i = ft_printf("pointer\n") + 48;
+	write(fd, &i, 1);
+	write(fd, "\n", 1);
+	j = printf("pointer\n") + 48;
+	write(fd, &j, 1);
+	write(fd, "\n", 1);
+	close(fd);
 	return (0);
 }
