@@ -6,13 +6,13 @@
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 01:21:53 by mohkhald          #+#    #+#             */
-/*   Updated: 2024/12/23 19:50:38 by mohkhald         ###   ########.fr       */
+/*   Updated: 2024/12/24 00:38:45 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putchar_fd(char c, int fd)
+int	ft_putchar_fd(char c)
 {
-	return (write(fd, &c, 1));
+	return (write(1, &c, 1));
 }

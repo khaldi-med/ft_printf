@@ -6,13 +6,13 @@
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 01:22:15 by mohkhald          #+#    #+#             */
-/*   Updated: 2024/12/14 00:44:50 by mohkhald         ###   ########.fr       */
+/*   Updated: 2024/12/24 00:27:07 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putstr_fd(char *s, int fd)
+int	ft_putstr_fd(char *s)
 {
 	int	count;
 
@@ -21,7 +21,7 @@ int	ft_putstr_fd(char *s, int fd)
 		s = "(null)";
 	while (s[count])
 	{
-		ft_putchar_fd(s[count], fd);
+		ft_putchar_fd(s[count]);
 		count++;
 	}
 	return (count);

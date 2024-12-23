@@ -16,11 +16,11 @@ int	main(void)
 	fd = open("text.txt", O_RDWR);
 	j = 0;
 	i = 0;
-	i = ft_printf("pointer\n") + 48;
-	write(fd, &i, 1);
-	write(fd, "\n", 1);
 	j = printf("pointer\n") + 48;
 	write(fd, &j, 1);
+	write(fd, "\n", 1);
+	i = ft_printf("pointer\n") + 48;
+	write(fd, &i, 1);
 	write(fd, "\n", 1);
 	close(fd);
 	return (0);
