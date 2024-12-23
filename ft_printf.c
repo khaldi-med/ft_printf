@@ -6,7 +6,7 @@
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 01:07:30 by mohkhald          #+#    #+#             */
-/*   Updated: 2024/12/14 01:29:47 by mohkhald         ###   ########.fr       */
+/*   Updated: 2024/12/23 19:51:45 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,6 @@ int	ft_printf(const char *format, ...)
 	count = 0;
 	if (!format)
 		return (0);
-	if (write(1, 0, 0) == -1)
-		return (-1);
 	va_start(args, format);
 	while (*format)
 	{
