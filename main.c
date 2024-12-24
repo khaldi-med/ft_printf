@@ -13,7 +13,7 @@ int	main(void)
 	int	i;
 
 	close(1);
-	fd = open("text.txt", O_RDWR);
+	fd = open("text.txt", O_WRONLY);
 	j = 0;
 	i = 0;
 	j = printf("pointer\n") + 48;

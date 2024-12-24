@@ -6,7 +6,7 @@
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 01:07:30 by mohkhald          #+#    #+#             */
-/*   Updated: 2024/12/24 00:38:30 by mohkhald         ###   ########.fr       */
+/*   Updated: 2024/12/24 02:22:08 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int	ft_printf(const char *format, ...)
 {
 	va_list	args;
 	int		count;
+	int		ret;
 
 	count = 0;
 	if (!format)
@@ -50,9 +51,16 @@ int	ft_printf(const char *format, ...)
 	while (*format)
 	{
 		if (*format == '%')
-			count += ft_handle_format(*(++format), args);
+			ret = ft_handle_format(*(++format), args);
 		else
-			count += ft_putchar_fd(*format);
+			ret = ft_putchar_fd(*format);
+		format++;
+		if (ret == -1)
+		{
+			va_end(args);
+			return (-1);
+		}
+		count += ret;
 		format++;
 	}
 	va_end(args);
