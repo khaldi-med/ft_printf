@@ -6,23 +6,19 @@
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 01:22:15 by mohkhald          #+#    #+#             */
-/*   Updated: 2024/12/24 00:27:07 by mohkhald         ###   ########.fr       */
+/*   Updated: 2024/12/24 01:33:49 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putstr_fd(char *s)
+void	ft_putstr_fd(char *s)
 {
-	int	count;
-
-	count = 0;
 	if (!s)
 		s = "(null)";
-	while (s[count])
+	while (*s)
 	{
-		ft_putchar_fd(s[count]);
-		count++;
+		ft_putchar_fd(*s);
+		s++;
 	}
-	return (count);
 }
