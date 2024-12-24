@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/10 01:22:15 by mohkhald          #+#    #+#             */
-/*   Updated: 2024/12/24 01:53:17 by mohkhald         ###   ########.fr       */
+/*   Created: 2024/11/12 22:36:43 by mohkhald          #+#    #+#             */
+/*   Updated: 2024/12/24 02:00:10 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putstr_fd(char *s)
+int	ft_putnbr_fd(int n)
 {
-	int count = 0;
-	if (!s)
-		s = "(null)";
-	while (s[count])
+	int	count;
+
+	count = 0;
+	if (n == -2147483648)
 	{
-		ft_putchar_fd(s[count]);
-		count++;
+		count = +ft_putstr_fd("-2147483648");
+		return (count);
 	}
-	return count;
+	if (n < 0)
+	{
+		ft_putchar_fd('-');
+		n *= -1;
+	}
+	if (n > 9)
+		count += ft_putnbr_base(n, 10, "0123456789");
+	return (count);
 }
