@@ -6,7 +6,7 @@
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 06:51:05 by mohkhald          #+#    #+#             */
-/*   Updated: 2024/12/24 00:30:33 by mohkhald         ###   ########.fr       */
+/*   Updated: 2024/12/25 22:36:57 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ int	ft_put_pointer(unsigned long n)
 {
 	int	count;
 
-	count = ft_putstr_fd("0x");
+	count = ft_putstr("0x");
 	if (n == 0)
 	{
-		ft_putchar_fd('0');
+		ft_putchar('0');
 		count++;
 	}
 	else

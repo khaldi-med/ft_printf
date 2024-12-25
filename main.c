@@ -14,14 +14,12 @@ int	main(void)
 
 	close(1);
 	fd = open("text.txt", O_WRONLY);
-	j = 0;
-	i = 0;
-	j = printf("pointer") + 48;
+	j = printf("or:") + '0';
 	write(fd, &j, 1);
 	write(fd, "\n", 1);
-	i = ft_printf("pointer") + 48;
-	write(fd, &i, 1);
+	i = ft_printf("my:") + '0';
 	write(fd, "\n", 1);
+	write(fd, &i, 1);
 	close(fd);
 	return (0);
 }

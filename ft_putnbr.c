@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 22:36:43 by mohkhald          #+#    #+#             */
-/*   Updated: 2024/12/24 02:00:10 by mohkhald         ###   ########.fr       */
+/*   Updated: 2024/12/25 22:43:26 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putnbr_fd(int n)
+int	ft_putnbr(int n)
 {
 	int	count;
 
 	count = 0;
 	if (n == -2147483648)
 	{
-		count = +ft_putstr_fd("-2147483648");
+		count += ft_putstr("-2147483648");
 		return (count);
 	}
 	if (n < 0)
 	{
-		ft_putchar_fd('-');
+		ft_putchar('-');
 		n *= -1;
 	}
 	if (n > 9)

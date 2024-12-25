@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 01:21:53 by mohkhald          #+#    #+#             */
-/*   Updated: 2024/12/24 22:47:04 by mohkhald         ###   ########.fr       */
+/*   Updated: 2024/12/25 22:36:22 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putchar_fd(char c)
+int	ft_putchar(char c)
 {
-	if (write(1, &c, 1) == -1)
-		return (-1);
-	return (1);
+	return (write(1, &c, 1));
 }

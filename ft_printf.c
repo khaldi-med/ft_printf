@@ -6,7 +6,7 @@
 /*   By: mohkhald <mohkhald@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 01:07:30 by mohkhald          #+#    #+#             */
-/*   Updated: 2024/12/24 22:46:23 by mohkhald         ###   ########.fr       */
+/*   Updated: 2024/12/25 22:40:58 by mohkhald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ static int	ft_handle_format(char format, va_list args)
 
 	count = 0;
 	if (format == 'c')
-		count += (ft_putchar_fd(va_arg(args, int)));
+		count += (ft_putchar(va_arg(args, int)));
 	else if (format == 's')
-		count += (ft_putstr_fd(va_arg(args, char *)));
+		count += (ft_putstr(va_arg(args, char *)));
 	else if (format == 'p')
 		count += (ft_put_pointer(va_arg(args, unsigned long)));
 	else if (format == 'd' || format == 'i')
-		count += (ft_putnbr_fd(va_arg(args, int)));
+		count += (ft_putnbr(va_arg(args, int)));
 	else if (format == 'u')
 		count += (ft_putnbr_base(va_arg(args, unsigned int), 10, "0123456789"));
 	else if (format == 'x')
@@ -34,7 +34,9 @@ static int	ft_handle_format(char format, va_list args)
 		count += (ft_putnbr_base(va_arg(args, unsigned int), 16,
 					"0123456789ABCDEF"));
 	else if (format == '%')
-		count += ft_putchar_fd('%');
+		count += ft_putchar('%');
+	else
+		count += (ft_putchar(va_arg(args, int)));
 	return (count);
 }
 
@@ -42,25 +44,17 @@ int	ft_printf(const char *format, ...)
 {
 	va_list	args;
 	int		count;
-	int		ret;
 
 	count = 0;
 	if (!format)
-		return (0);
+		return (-1);
 	va_start(args, format);
 	while (*format)
 	{
 		if (*format == '%')
-			ret = ft_handle_format(*(++format), args);
+			count += ft_handle_format(*(++format), args);
 		else
-			ret = ft_putchar_fd(*format);
-		format++;
-		if (ret == -1)
-		{
-			va_end(args);
-			return (-1);
-		}
-		count += ret;
+			count += ft_putchar(*format);
 		format++;
 	}
 	va_end(args);
